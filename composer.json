@@ -1,0 +1,19 @@
+{
+    "name": "fenix/scrappe_pole_emploie",
+    "description": "scrapper p\u0000le emploie",
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lefebvre Harold",
+            "email": "73162352+Lefhar@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "ext-curl": "*"
+    }
+}
