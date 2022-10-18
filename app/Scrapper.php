@@ -34,11 +34,11 @@ class Scrapper
         $fin = $testHash[0][0];
         $tabforeach = array();
         foreach ($hashtweet[1] as $ht) {
-            echo $ht . '<br>';
+
             if ($ht) {
                 // $urlteste = str_replace('afficherplusderesultats/','afficherplusderesultats/'.$ht,$moreoffre);
                 $urlteste = $debut . $ht . "/" . $fin;
-                echo $urlteste . '<br>';
+
                 $page->setCurl($urlteste);
                 $offre2 = $page->getCurl(true);
                 $listeOffre2 = $this->getListeOffre($offre2);
@@ -50,7 +50,7 @@ class Scrapper
 
 
         $tabOffre = array_unique($tabOffre);
-  //      var_dump($tabOffre);
+        //      var_dump($tabOffre);
 
         foreach ($tabOffre as $row) {
             $mailExtract = "";
@@ -74,7 +74,7 @@ class Scrapper
                 }
                 if (!filter_var($mailExtract, FILTER_VALIDATE_EMAIL)) {
                     preg_match_all('`[a-z-_]+(@)+[a-z-_]+(.)[a-z-_]{3}`is', $siteoffre, $out, PREG_PATTERN_ORDER);
-                    if(!empty($out[0][0])){
+                    if (!empty($out[0][0])) {
                         if (filter_var($out[0][0], FILTER_VALIDATE_EMAIL)) {
                             $mailExtract = $out[0][0];
                         }
@@ -96,8 +96,10 @@ class Scrapper
                         }
                         if (!filter_var($mailExtract, FILTER_VALIDATE_EMAIL)) {
                             preg_match_all('`[a-z-_]+(@)+[a-z-_]+(.)[a-z-_]{3}`is', $siteexterne, $out, PREG_PATTERN_ORDER);
-                            if (filter_var($out[0][0], FILTER_VALIDATE_EMAIL)) {
-                                $mailExtract = $out[0][0];
+                            if (!empty($out[0][0])) {
+                                if (filter_var($out[0][0], FILTER_VALIDATE_EMAIL)) {
+                                    $mailExtract = $out[0][0];
+                                }
                             }
                         }
                     }
